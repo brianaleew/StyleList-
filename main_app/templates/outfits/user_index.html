@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="page-title outfit-header">
+        
+            <div class="outfit-header-title">
+                <h1 class="">MY OUTFITS</h1>
+                <a class="btn btn--white" href="{% url 'outfits_create' %}">Add New Outfit</a>
+            </div>
+        
+    </div>
+    <div class="container-fluid outfit-container">
+        <div class="row" style="margin-top: 50px;">
+            {% for outfit in outfits %}
+                <div class="col outfit">
+                    <h4 class="outfit-title" style="text-align: center;">{{outfit.name}}</h4>
+                    <a href="{% url 'outfits_detail' outfit.id %}"><img class="outfit-img" src="https://cdn.shopify.com/s/files/1/2091/6645/products/JCR-16-M-Suit-01_800x.jpg?v=1574452714" alt="">
+                    </a>
+                </div>
+            
+            
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

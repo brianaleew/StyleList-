@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if object %}
+        <h1>Edit {{ object.name }}</h1>
+    {% else %}
+        <h1>Add to the Closet! </h1>
+    {% endif %}
+    <form class="form" action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ apparel_form.as_table }}
+        </table>
+        <input type="submit" value="Submit!" class="btn">
+    </form>
+
+
+    <!-- <form action="" method="POST">
+        {% csrf_token %}
+        <label for="type" class="form-label">Apparel Type</label>
+        <input
+            class="form-control" 
+            type="text" 
+            name="type"
+        >
+        <label for="name" class="form-label">Apparel Name</label>
+        <input
+            class="form-control" 
+            type="text" 
+            name="name"
+            placeholder="What would you like the name of this clothing item to be?"
+        >
+        <label for="brand" class="form-label">Brand</label>
+        <input
+            class="form-control" 
+            type="text" 
+            name="brand"
+            placeholder="What brand is the item made by?"
+        >
+        <label for="color" class="form-label">Color</label>
+        <input
+            class="form-control" 
+            type="text" 
+            name="color"
+            placeholder="What color/wash does the item have?"
+        >
+        <label for="size" class="form-label">Size</label>
+        <input
+            class="form-control" 
+            type="text" 
+            name="size"
+            placeholder="What size is your item? (Ex: small, medium, large, 0, 12, etc.)"
+        >
+        <label for="style" class="form-label">Style Notes</label>
+        <input
+            class="form-control" 
+            type="text" 
+            name="style"
+            placeholder="Input Style notes here: (Ex: heel-height: 3inches or sleeve-length: short-sleeve)"
+        >
+        <label for="img" class="form-label">Apparel Image</label>
+        <input
+            class="form-control" 
+            type="file" 
+            name="img"
+            aria-describedby="imgHelp"
+        >
+        <div id="imgHelp" class="form-text">
+            Choose an image to represent your clothing item (a.k.a a picture of your clothing item)
+        </div>
+        
+
+        <input type="submit" value="Submit Form" class="btn btn-danger">
+    </form> -->
+{% endblock %}

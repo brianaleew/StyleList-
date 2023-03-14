@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="home-container container-lg">
+        <div class="home-section-one row">
+            <h1 class="home-title" id="home-2">Discover New Ways to Style.</h1>
+            <h1 class="home-title" id="home-1"><span class="special-text">Organize</span> Your Closet</h1>
+            
+            <h1 class="home-title" id="home-3">Share Your <span class="special-text">Outfits</span></h1>
+            <div class="col slide">
+                <!-- carousel starts here -->
+                <div class="main-carousel" data-flickity='{ "autoPlay": true}'>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1623205683000-NHARCR.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1666178780000-EWacEb.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1655694993000-3s328D.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1635495621000-x7w3dM.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1636534403000-wwjHfb.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                </div>
+            </div>
+            <div class="col slide slideshow-two">
+                <!-- carousel starts here -->
+                <div class="main-carousel" data-flickity='{ "autoPlay": true }'>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1666161406000-RQF6yf.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1652334251000-ZYZBGd.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1666787468000-TtF7SQ.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1673437983000-RGSQ6D.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1664278872000-ahdZ8P.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                </div>
+            </div>
+            <div class="col slide">
+                 <!-- carousel starts here -->
+                <div class="main-carousel" data-flickity='{ "autoPlay": true }'>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1657777960000-Z4dzYf.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1676018259000-XX3RdQ.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1650629743000-fJfmxf.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1666073557000-PwXHZa.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div>
+                    <div class="carousel-cell"><img src="https://img1.shopcider.com/product/1652424715000-3zYXAp.jpg?x-oss-process=image/resize,w_350,m_lfit/quality,Q_80/format,webp" alt=""></div> 
+                </div>
+         </div>
+
+        <span class="home-section-divide"></span>
+
+         <div class="home-section-two container-md">
+            <div class="row">
+                <div class="col home-section-two-title">
+                    <h2>Get Style Recommendations</h2>
+                <!-- icon here -->
+                    <!-- <button class="btn btn-accent"><a  href="{% url 'user_profile' user.id %}">Head to Profile </a></button> -->
+                </div>
+                
+                <div class="col">
+                    <img src="https://images.unsplash.com/photo-1609534927279-5d8c599f3ea6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHBpbmslMjBmYXNoaW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                </div>
+            </div>
+         </div>
+
+         <span class="home-section-divide"></span>
+
+         <div class="home-section-three container-md">
+            
+                <div class="home-section-two-title">
+                    <h2>Start Your Experience</h2>
+                <!-- icon here -->
+                    <button class="btn btn-main"><a  href="{% url 'apparels_index' %}">Enter Your Closet </a></button>
+                </div>
+                
+                <div class="">
+                    <img src="https://cdn.decorpad.com/photos/2023/02/06/closet-island-jewelry-drawers.jpg" alt="">
+                </div>
+        
+         </div>
+
+    </div>
+
+    
+
+{% endblock %}

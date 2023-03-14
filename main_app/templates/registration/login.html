@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Please Login</h1>
+
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn-primary" type="submit" value="Login" />
+        <!-- brings user back to the page they tried to access before logging in -->
+        <input type="hidden" name="text" value="{{ next }}">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--Form starts with questions for date, event and caption 
+    I want each slideshow to act as an input field in a form 
+     each slideshow contains one type of apparel
+    whichever picture is selected = the item added to outfit
+    a submit button on the bottom that locks everything in and creates the outfit -->
+<h1>Virtual Closet </h1>
+
+    {% if object %}
+    <h1>Update {{ object.name }}</h1>
+{% else %}
+    <h1>Create Outfit </h1>
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <table> {{ form.as_table }}</table>
+    <input type="submit" class="btn" value="{% if object %} Update Outfit {% else %} Add Outfit {% endif %}" />
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Delete {{apparel.type}}</h1>
+    <!-- i want the image of item here -->
+
+    <h4>Are you sure you want to delete {{ object.name }} ?</h4>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <input type="submit" class="btn red" value="Yes, Delete" />
+        <a href="{% url 'detail' apparel.id %}" class="btn blue">Cancel</a>
+    </form>
+{% endblock %}

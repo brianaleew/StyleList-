@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Sign Up Below </h1>
+
+    <p>{{error_message}}</p>
+
+    <form action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn-primary" type="submit" value="Sign Up">
+    </form>
+
+
+{% endblock %}

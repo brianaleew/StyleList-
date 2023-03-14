@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section>
+    <div class="index-header container-fluid">
+        
+      
+      <h1 class="">{{user.username}}'s Clothing Index </h1>
+      
+      <span class="filters">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Tops</a></li>
+                <li><a class="dropdown-item" href="#">Bottoms</a></li>
+                <li><a class="dropdown-item" href="#">Shoes</a></li>
+            </ul>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary btn-sm" type="button">
+                  Change Closet Theme
+                </button>
+                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  ...
+                </ul>
+              </div>
+            </span>
+            <div class="links ">
+              <a class="btn btn--white" href="{% url 'apparels_create' %}">Add New Clothing</a>
+              <a class="btn btn--white" href="{% url 'outfits_user_index' %}">View My Outfits</a>
+            </div>
+        
+            
+        
+
+    </div>
+  </section>
+    
+    <section>
+      <div class="index-container container-fluid">
+          {% for apparel in apparels %}
+          <!-- hanger img will be here -->
+            <div class="index-item-container  ">
+              <h4>{{ apparel.name }}</h4>
+              <h5> {{ apparel.brand }} </h5>
+              <div><img src="{{ apparel.img }}" alt=""></div>
+            </div>
+      
+          <a href="{% url 'detail' apparel.id %}">View {{ apparel.name }}</a>
+      
+          {% endfor %}
+      </div>
+    </section>
+
+{% endblock %}

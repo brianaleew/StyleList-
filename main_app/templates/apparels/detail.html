@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1> {{apparel.name}} </h1>
+    <h4> {{apparel.brand}} </h4>
+    <a href="{% url 'apparels_update' apparel.id %}">Edit {{apparel.name}}</a>
+    <a href="{% url 'apparels_delete' apparel.id %}">Delete {{apparel.name}}</a>
+{% endblock %}

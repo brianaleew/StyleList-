@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section>
+        <div class="container-lg outfit-detail-container">
+            <h1 class="page-title">{{outfit.name}}</h1>
+            <div style="text-align: center; margin: 40px 20px; padding-bottom: 30px;">
+                <h2>Made For: {{outfit.event}}</h2>
+                <a class="btn btn--white" href="{% url 'outfits_update' outfit.id %}">Edit {{outfit.name}}</a>
+                <a class="btn btn--white" href="{% url 'outfits_delete' outfit.id %}">Delete {{outfit.name}}</a>
+            </div>
+                {% if outfit.apparels.count %}
+                    {% for apparel in outfit.apparels.all %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">{{apparel.name}}</h4>
+                            </div>
+                        </div>
+                        <form action="{% url 'unassoc_apparel' outfit.id apparel.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" class="btn danger" value="Remove Item">
+                        </form>
+                    {% endfor%}
+                {% endif %}
+        </div>
+    </section>      
+
+
+    <!-- These are the unassoc apparels displayed by carousels and separated by type (look at tuples in models.py for more info) -->
+    <div class="apparel-container">
+        <h3 class="slides-title">Your Tops</h3>
+        <div class="carousel" data-flickity='{ "groupCells": true }'>
+            {% if apparels.count %}
+                {% for apparel in apparels.all %}
+                    {% if apparel.type == 'T' %}
+                    <div class="carousel-cell">
+                        <div class="card slide-outfit-card">
+                            <div class="card-title">{{apparel.name}}</div>
+                            <form action="{% url 'assoc_apparel' outfit.id apparel.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" class="btn" value="Add">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="apparel-container">
+        <h3 class="slides-title">Your Bottoms</h3>
+        <div class="carousel" data-flickity='{ "groupCells": true }'>
+            {% if apparels.count %}
+                {% for apparel in apparels.all %}
+                    {% if apparel.type == 'B' %}
+                    <div class="carousel-cell">
+                        <div class="card slide-outfit-card">
+                            <div class="card-title">{{apparel.name}}</div>
+                            <form action="{% url 'assoc_apparel' outfit.id apparel.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" class="btn" value="Add">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="apparel-container">
+        <h3 class="slides-title">Your Shoes</h3>
+        <div class="carousel" data-flickity='{ "groupCells": true }'>
+            {% if apparels.count %}
+                {% for apparel in apparels.all %}
+                    {% if apparel.type == 'S' %}
+                    <div class="carousel-cell">
+                        <div class="card slide-outfit-card">
+                            <div class="card-title">{{apparel.name}}</div>
+                            <form action="{% url 'assoc_apparel' outfit.id apparel.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" class="btn" value="Add">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    
+
+{% endblock %}

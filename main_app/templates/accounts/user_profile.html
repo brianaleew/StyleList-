@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+
+        <div>
+            <img class="profile-image" src="https://i.pinimg.com/236x/4b/8e/63/4b8e63ee2be0356877598bef7b9f197e.jpg" alt="user profile picture">
+            <h4>{{user.username}}</h4>
+            <h5>Edit Profile</h5>
+        </div>
+
+        <div class="row">
+            <div class="col profile-information">
+                <h2>{{user.username}}'s Style Profile </h2>
+                <h4>Body Type: {{user.userprofile.body_type}}</h4>
+                <h4>Color Palette: {{user.userprofile.color_palette}}</h4>
+                <h4>{{user.userprofile.top_styles}}</h4>
+               
+                
+            </div>
+            <div class="col profile-stylist">
+                <h2>Personal Stylist</h2>
+
+            </div>
+        </div>
+    </div>
+    
+   
+
+{% endblock %}
