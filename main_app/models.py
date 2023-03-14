@@ -21,7 +21,6 @@ class Apparel(models.Model):
     brand = models.CharField(max_length=40)
     color = models.CharField(max_length=30)
     size = models.CharField(max_length=40)
-    img = models.ImageField(default='images/img-error.png')
     style = models.CharField(max_length=70, default='not specified')
     type = models.CharField(
         max_length=1,
@@ -68,4 +67,10 @@ class UserProfile(models.Model):
         return reverse('user_profile', kwargs={'user_id': self.id })
 
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    apparel = models.ForeignKey(Apparel, on_delete=models.CASCADE)
 
+
+    def __str__(self):
+        return f"Apparel Photo for: {self.apparel_id} @{self.url}"

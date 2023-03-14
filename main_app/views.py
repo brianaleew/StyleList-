@@ -1,12 +1,22 @@
 from django.shortcuts import render, redirect
-from .models import Apparel, Outfit, User, UserProfile
+from .models import Apparel, Outfit, User, UserProfile, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from main_app.forms import ApparelForm 
+# from main_app.forms import ApparelForm 
+import uuid #creates our unique ids for 
+import boto3 #connects us to s3
+from django.conf import settings
+
+# AWS s3 KEYS
+AWS_ACCESS_KEY = settings.AWS_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY = settings.AWS_SECRET_ACCESS_KEY
+S3_BUCKET = settings.S3_BUCKET
+S3_BASE_URL = settings.S3_BASE_URL
+
 # Create your views here.
 
 def home(request):
@@ -28,8 +38,8 @@ def apparels_detail(request, apparel_id):
 
 class ApparelCreate(CreateView):
     model = Apparel
-    fields = ['name', 'brand', 'color', 'size', 'img', 'style', 'type']
-    apparel_form = ApparelForm
+    fields = ['name', 'brand', 'color', 'size', 'style', 'type']
+    # apparel_form = ApparelForm
     def form_valid(self, form):
     # self.request.user is assigning the user
         form.instance.user = self.request.user  
@@ -38,7 +48,7 @@ class ApparelCreate(CreateView):
 # apparels can update everything except the type field
 class ApparelUpdate(UpdateView):
     model = Apparel
-    fields = ['name', 'brand', 'color', 'size', 'img', 'style']
+    fields = ['name', 'brand', 'color', 'size', 'style']
 
 class ApparelDelete(DeleteView):
     model = Apparel
@@ -66,8 +76,9 @@ def outfits_detail(request, outfit_id):
     id_list = outfit.apparels.filter(user=request.user).values_list('id')
 
     unused_apparels = Apparel.objects.exclude(id__in=id_list)
+    photos = Photo.objects.all()
 
-    return render(request, 'outfits/detail.html', {'outfit': outfit, 'apparels': unused_apparels })
+    return render(request, 'outfits/detail.html', {'outfit': outfit, 'apparels': unused_apparels, 'photos':photos })
 
 class OutfitCreate(CreateView):
     model = Outfit
@@ -121,3 +132,26 @@ def user_profile(request, user_id):
 class ProfileUpdate(UpdateView):
     model = User
     fields = ['body_type', 'color_palette', 'top_styles', 'profile_img']
+
+
+# Adding a View for Apparel Photos 
+def add_photo(request, apparel_id):
+    photo_file = request.FILES.get('photo-file', None)
+    # If photo is present, make reference to boto3 and create unique id for photo
+    if photo_file:
+        s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # handling success/failure
+        try:
+            # build url string for upload to s3
+            s3.upload_fileobj(photo_file, S3_BUCKET, key)
+            url = f"{S3_BASE_URL}{S3_BUCKET}/{key}"
+            # create photo model using photo location then save
+            photo = Photo(url=url, apparel_id=apparel_id)
+            photo.save()
+        except Exception as error:
+            # print an error message
+            print('Error uploading photo', error)
+            return redirect('detail', apparel_id=apparel_id)
+    # success = redirect to detail
+    return redirect('detail', apparel_id=apparel_id)
