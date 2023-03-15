@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<!--Form starts with questions for date, event and caption 
+<!-- NEXT VERSION: Form starts with questions for date, event and caption 
     I want each slideshow to act as an input field in a form 
      each slideshow contains one type of apparel
     whichever picture is selected = the item added to outfit
     a submit button on the bottom that locks everything in and creates the outfit -->
-<h1>Virtual Closet </h1>
-
-    {% if object %}
-    <h1>Update {{ object.name }}</h1>
-{% else %}
-    <h1>Create Outfit </h1>
-{% endif %}
-<form action="" method="POST">
-    {% csrf_token %}
-
-    <table> {{ form.as_table }}</table>
-    <input type="submit" class="btn" value="{% if object %} Update Outfit {% else %} Add Outfit {% endif %}" />
-</form>
+    <div class="container-md" style="display: flex; flex-direction: row;">
+        <div>
+            <img src="https://images.pexels.com/photos/4937449/pexels-photo-4937449.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        </div>
+        <div style="margin-top: 180px; text-align: center;">
+            <h5 >One Step Closer to Your</h5>
+            <h1 style="font-size: 90px; margin-bottom: 40px;">Virtual Closet </h1>
+                {% if object %}
+                <h1>Update {{ object.name }}</h1>
+            {% else %}
+                <h1>Create Outfit </h1>
+            {% endif %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table> {{ form.as_table }}</table>
+                <input type="submit" class="btn btn--white" style="margin: 10px; text-align: center;" value="{% if object %} Update Outfit {% else %} Add Outfit {% endif %}" />
+            </form>
+        </div>
+    </div>
 {% endblock %}

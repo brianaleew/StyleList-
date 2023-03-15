@@ -224,7 +224,25 @@ a {
 .index-item-img {
     width: 200px;
 }
-
+/* Apparel Form */
+.apparel-form-header {
+    background-image: url('https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    height: 400px;
+    width: 600px;
+    /* justify-self: center; */
+    display: flex;
+    align-items: center;
+}
+.apparel-form-header-title {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.638);
+    padding: 10px;
+    margin-top: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
 /* Outfit Index (Inspo) */
 
 

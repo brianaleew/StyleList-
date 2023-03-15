@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% if object %}
-        <h1>Edit {{ object.name }}</h1>
+    
+    <div class="apparel-form-header" >
+        {% if object %}
+        <h1 style="text-align: center;" class="apparel-form-header-title">Edit {{ object.name }}</h1>
     {% else %}
-        <h1>Add to the Closet! </h1>
+        <h1 style="text-align: center;" class="apparel-form-header-title">Add to the Closet! </h1>
     {% endif %}
-    <form class="form" action="" method="POST">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="Submit!" class="btn">
-    </form>
+    </div>
+   
+    
+    <div style="margin-top: 30px; text-align: center; ">
+        <form class="" action="" method="POST">
+            {% csrf_token %}
+            <table class="form-group">
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Submit!" class="btn btn--white" style="text-align: center; margin-top: 30px;">
+        </form>
+    </div>
 
 
     <!-- <form action="" method="POST">
