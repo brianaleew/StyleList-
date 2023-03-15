@@ -28,6 +28,7 @@ a {
     text-decoration: none;
 }
 
+
 /* All Pages  */
 .page-title {
     text-align: center;
@@ -178,6 +179,19 @@ a {
     border: 2px solid black;
     border-radius: 20px;
     text-align: center;
+    
+}
+.profile-list {
+    list-style-type: none;
+    text-align: center;
+    
+}
+.fa-xmark {
+    color: red;
+    padding: 5px;
+}
+.fa-check {
+    color: green;
 }
 
 
