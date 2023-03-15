@@ -1,30 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1> {{apparel.name}} </h1>
-    <h4> {{apparel.brand}} </h4>
-    <a href="{% url 'apparels_update' apparel.id %}">Edit {{apparel.name}}</a>
-    <a href="{% url 'apparels_delete' apparel.id %}">Delete {{apparel.name}}</a>
-    </div>
-    
-    </div>
-    {% for photo in apparel.photo_set.all %}
-    <img src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
-    {% empty %}
-    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-    {% endfor %}
-
-    <!-- here's where the photo form will live -->
-    <form 
-    class="card-panel"
-    action="{% url 'add_photo' apparel.id %}"
-    method="POST"
-    enctype="multipart/form-data" 
-    >
-    {% csrf_token %}
-    <input type="file" name="photo-file" />
-    <br/><br/>
-    <input type="submit" class="btn" value="Upload Photo"/>
-    </form>
+    <div class="container-lg">
+        
+        <div class="row ">
+            <div class="col" style="margin-top: 60px; margin-left: 50px;" >
+                {% for photo in apparel.photo_set.all %}
+                    <img src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
+                {% empty %}
+                    <div class=""><img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
+                {% endfor %}
+            </div>    
+            <div class="col" style="margin-top: 60px;" >
+                <h1 style="font-size: 70px;"> {{apparel.name}} </h1>
+                <h4 style="font-size: 40px;"> {{apparel.brand}} </h4>
+                <h4>Color: {{apparel.color}}</h4>
+                <h4>Size: {{apparel.size}}</h4>
+                <h4></h4>
+                <a class="btn btn--white" href="{% url 'apparels_update' apparel.id %}">Edit {{apparel.name}}</a>
+                <a class="btn btn--white" href="{% url 'apparels_delete' apparel.id %}">Delete {{apparel.name}}</a>
+            </div>
+        </div>
+        
+        
+        
+        
+        <!-- upload photos here -->
+            <div style="margin-left: 60px;">
+                <form
+                class="card-panel"
+                action="{% url 'add_photo' apparel.id %}"
+                method="POST"
+                enctype="multipart/form-data"
+                >
+                {% csrf_token %}
+                <input type="file" name="photo-file" />
+                <br/><br/>
+                <input type="submit" class="btn btn--white" value="Upload Photo"/>
+                </form>
+            </div>
+        
+        
     </div>
 
 {% endblock %}
