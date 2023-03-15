@@ -1,9 +1,10 @@
 # GA-Final-Project
 Briana Wright's Capstone for the General Assembly SEI Immersive Program
 # StyleList 
-
+This is a new repo...
+link to original repo: https://github.com/brianaleew/GA-Final-Project
 # Overview
-- picture of landing page will be here upon completion 
+ ![Landing page](Images/Landing.png)
 
 StyleList is an app for users who simply want to organize their closet, elevate their personal style or just love interacting with fashion. As someone who loves fashion and has a high volume of clothing varying in style, I often find that it is hard to keep track of all my clothes. This web application solves this problem and so much more! Want to find new inspiration for an upcoming date? Want to dress in a way that flatters your body type? StyleList has it all!
 
@@ -63,7 +64,7 @@ All users should be able to:
 - PostgreSQL
 - HTML
 - CSS 
-- Bootstrap/SASS
+- Bootstrap
 
 # Installation Instructions
 TBA

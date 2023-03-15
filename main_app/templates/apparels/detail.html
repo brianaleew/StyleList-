@@ -5,7 +5,11 @@
         <div class="row ">
             <div class="col" style="margin-top: 60px; margin-left: 50px;" >
                 {% for photo in apparel.photo_set.all %}
-                    <img src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
+                    {%if apparel.type == 'S'%}
+                        <img style='width:500px;'src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
+                    {% else %}
+                        <img src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
+                    {% endif %}
                 {% empty %}
                     <div class=""><img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
                 {% endfor %}

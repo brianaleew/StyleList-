@@ -14,11 +14,16 @@
       
         <div class="index-container container-lg row ">
             {% for apparel in apparels %}
-              <div class="index-item-container col">
+              <div class="index-item-container ">
                 <h4 style="text-align: center;">{{ apparel.name }}</h4>
                 <h5 style="text-align: center;"> {{ apparel.brand }} </h5>
                 {% for photo in apparel.photo_set.all %}
-                  <img width="200px"  src="{{photo.url}}" alt="photo of item" >
+                  {%if apparel.type == 'S'%}
+                    <img style='width:250px;'src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
+                  {% else %}
+                    <img width="200px"  src="{{photo.url}}" alt="photo of item" >
+                  {% endif %}
+                  
                 {% empty %}
                   <div> <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
                 {% endfor %}

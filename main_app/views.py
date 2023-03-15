@@ -25,18 +25,20 @@ def home(request):
 
 # APPAREL VIEWS
 # display all apparels 
+@login_required
 def apparels_index(request):
     apparels = Apparel.objects.filter(user=request.user)
 
     return render(request, 'apparels/index.html', { 'apparels': apparels})
 # display one apparel item
+@login_required
 def apparels_detail(request, apparel_id):
     apparel = Apparel.objects.get(id=apparel_id)
 
     return render(request, 'apparels/detail.html', { 'apparel': apparel })
 
 
-class ApparelCreate(CreateView):
+class ApparelCreate(LoginRequiredMixin, CreateView):
     model = Apparel
     fields = ['name', 'brand', 'color', 'size', 'style', 'type']
     # apparel_form = ApparelForm
@@ -46,11 +48,11 @@ class ApparelCreate(CreateView):
         return super().form_valid(form)
 
 # apparels can update everything except the type field
-class ApparelUpdate(UpdateView):
+class ApparelUpdate(LoginRequiredMixin, UpdateView):
     model = Apparel
     fields = ['name', 'brand', 'color', 'size', 'style']
 
-class ApparelDelete(DeleteView):
+class ApparelDelete(LoginRequiredMixin, DeleteView):
     model = Apparel
     success_url = '/apparels/'
 
@@ -58,18 +60,21 @@ class ApparelDelete(DeleteView):
 #OUTFIT VIEWS
 
 # this index represents the inspo page (all user outfits will be here)
+
 def outfits_index(request):
     outfits = Outfit.objects.all()
 
     return render(request, 'outfits/index.html', { 'outfits': outfits})
 
 # displays only the users outfits
+@login_required
 def outfits_user_index(request):
     outfits = Outfit.objects.filter(user=request.user)
 
     return render(request, 'outfits/user_index.html', { 'outfits': outfits})
 
 # view one outfit 
+@login_required
 def outfits_detail(request, outfit_id):
     outfit = Outfit.objects.get(id=outfit_id)
 
@@ -80,7 +85,7 @@ def outfits_detail(request, outfit_id):
 
     return render(request, 'outfits/detail.html', {'outfit': outfit, 'apparels': unused_apparels, 'photos':photos })
 
-class OutfitCreate(CreateView):
+class OutfitCreate(LoginRequiredMixin, CreateView):
     model = Outfit
     fields = ['name', 'date', 'event', 'caption']
 
@@ -89,20 +94,22 @@ class OutfitCreate(CreateView):
         form.instance.user = self.request.user  
         return super().form_valid(form)
 
-class OutfitUpdate(UpdateView):
+class OutfitUpdate(LoginRequiredMixin, UpdateView):
     model = Outfit
     fields = ['name', 'date', 'event', 'caption']
 
-class OutfitDelete(DeleteView):
+class OutfitDelete(LoginRequiredMixin, DeleteView):
     model = Outfit
     success_url = '/outfits/'
 
 # the assoc apparel func will handle when apparels are added to an outfit
+@login_required
 def assoc_apparel(request, outfit_id, apparel_id):
     Outfit.objects.get(id=outfit_id).apparels.add(apparel_id)
     return redirect('outfits_detail', outfit_id=outfit_id)
 
 # the unassoc apparel func will handle removing apparels from an outfit 
+@login_required
 def unassoc_apparel(request, outfit_id, apparel_id):
     Outfit.objects.get(id=outfit_id).apparels.remove(apparel_id)
     return redirect('outfits_detail', outfit_id=outfit_id)
@@ -129,7 +136,7 @@ def user_profile(request, user_id):
 
     return render(request, 'accounts/user_profile.html', {'user': user, })
 
-class ProfileUpdate(UpdateView):
+class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = UserProfile 
     fields = ['body_type', 'color_palette', 'top_styles', 'profile_img']
 
@@ -139,6 +146,7 @@ class ProfileUpdate(UpdateView):
         return super().form_valid(form)
 
 # Adding a View for Apparel Photos 
+@login_required
 def add_photo(request, apparel_id):
     photo_file = request.FILES.get('photo-file', None)
     # If photo is present, make reference to boto3 and create unique id for photo
