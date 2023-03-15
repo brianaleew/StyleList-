@@ -163,6 +163,7 @@ a {
     border-radius: 50%;
     width: 150px;
     justify-self: center;
+    align-self: center;
 }
 .profile-information {
     background-color: var(--color-main);
@@ -173,7 +174,11 @@ a {
     background-color: var(--color-accent);
     border-radius: 20px;
 }
-
+.profile-user-style {
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+}
 
 
 
@@ -191,9 +196,19 @@ a {
     margin-top: 50px;
 }
 .index-item-container {
-    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 192, 203, 0.009);
+    border-radius: 20px;
+    width: 100px;
+    height: 400px;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+.index-item-img {
     width: 200px;
-    height: 200px;
 }
 
 /* Outfit Index (Inspo) */

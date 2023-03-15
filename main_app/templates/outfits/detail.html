@@ -10,15 +10,21 @@
             </div>
                 {% if outfit.apparels.count %}
                     {% for apparel in outfit.apparels.all %}
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">{{apparel.name}}</h4>
+                        
+                            <div style="text-align: center;">
+                                <h4 class="">{{apparel.name}}</h4>
+                                {% for photo in apparel.photo_set.all %}
+                                <img width="160px" src="{{photo.url}}" alt="photo of item">
+                            {% empty %}
+                                <div> <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
+                            {% endfor %}
+                            <form action="{% url 'unassoc_apparel' outfit.id apparel.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn--white" value="Remove Item">
+                            </form>
                             </div>
-                        </div>
-                        <form action="{% url 'unassoc_apparel' outfit.id apparel.id %}" method="POST">
-                            {% csrf_token %}
-                            <input type="submit" class="btn danger" value="Remove Item">
-                        </form>
+                        
+                       
                     {% endfor%}
                 {% endif %}
         </div>
@@ -36,9 +42,9 @@
                         <div class="card slide-outfit-card">
                             <div class="card-title">{{apparel.name}}</div>
                             {% for photo in apparel.photo_set.all %}
-                                <img width="160px" src="{{photo.url}}" alt="photo of item" class="responsive-img card-panel">
+                                <img width="160px" src="{{photo.url}}" alt="photo of item">
                             {% empty %}
-                                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                                <div> <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
                             {% endfor %}
                             <form action="{% url 'assoc_apparel' outfit.id apparel.id %}" method="POST">
                                 {% csrf_token %}
@@ -62,6 +68,11 @@
                     <div class="carousel-cell">
                         <div class="card slide-outfit-card">
                             <div class="card-title">{{apparel.name}}</div>
+                            {% for photo in apparel.photo_set.all %}
+                                <img width="160px" src="{{photo.url}}" alt="photo of item">
+                            {% empty %}
+                                <div> <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
+                            {% endfor %}
                             <form action="{% url 'assoc_apparel' outfit.id apparel.id %}" method="POST">
                                 {% csrf_token %}
                                 <input type="submit" class="btn" value="Add">
@@ -83,6 +94,11 @@
                     <div class="carousel-cell">
                         <div class="card slide-outfit-card">
                             <div class="card-title">{{apparel.name}}</div>
+                            {% for photo in apparel.photo_set.all %}
+                                <img width="160px" src="{{photo.url}}" alt="photo of item" >
+                            {% empty %}
+                                <div> <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
+                            {% endfor %}
                             <form action="{% url 'assoc_apparel' outfit.id apparel.id %}" method="POST">
                                 {% csrf_token %}
                                 <input type="submit" class="btn" value="Add">

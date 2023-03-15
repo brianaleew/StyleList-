@@ -130,9 +130,13 @@ def user_profile(request, user_id):
     return render(request, 'accounts/user_profile.html', {'user': user, })
 
 class ProfileUpdate(UpdateView):
-    model = User
+    model = UserProfile 
     fields = ['body_type', 'color_palette', 'top_styles', 'profile_img']
 
+    def form_valid(self, form):
+    # self.request.user is assigning the user
+        form.instance.user = self.request.user  
+        return super().form_valid(form)
 
 # Adding a View for Apparel Photos 
 def add_photo(request, apparel_id):

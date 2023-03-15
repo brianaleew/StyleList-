@@ -41,19 +41,22 @@
   </section>
     
     <section>
-      <div class="index-container container-fluid">
-          {% for apparel in apparels %}
-          <!-- hanger img will be here -->
-            <div class="index-item-container  ">
-              <h4>{{ apparel.name }}</h4>
-              <h5> {{ apparel.brand }} </h5>
-              <div><img src="{{ apparel.photo }}" alt="pic here"></div>
-            </div>
       
-          <a href="{% url 'detail' apparel.id %}">View {{ apparel.name }}</a>
+        <div class="index-container container-lg row ">
+            {% for apparel in apparels %}
+              <div class="index-item-container col">
+                <h4 style="text-align: center;">{{ apparel.name }}</h4>
+                <h5 style="text-align: center;"> {{ apparel.brand }} </h5>
+                {% for photo in apparel.photo_set.all %}
+                  <img width="200px"  src="{{photo.url}}" alt="photo of item" >
+                {% empty %}
+                  <div> <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="no image uploaded"></div>
+                {% endfor %}
+                <a class="btn btn--white"href="{% url 'detail' apparel.id %}">View {{ apparel.name }}</a>
+              </div>
+            {% endfor %}
+        </div>
       
-          {% endfor %}
-      </div>
     </section>
 
 {% endblock %}
