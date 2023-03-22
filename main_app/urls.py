@@ -13,7 +13,7 @@ urlpatterns = [
     path('apparels/<int:apparel_id>/add_photo/', views.add_photo, name='add_photo'),
     # Outfit urls 
     path('outfits/', views.outfits_index, name='outfits_index'),
-    path('outfits/mine', views.outfits_user_index, name='outfits_user_index'),
+    path('outfits/mine/', views.outfits_user_index, name='outfits_user_index'),
     path('outfits/<int:outfit_id>/', views.outfits_detail, name='outfits_detail'),
     path('outfits/create/', views.OutfitCreate.as_view(), name='outfits_create'),
     path('outfits/<int:pk>/update/', views.OutfitUpdate.as_view(), name='outfits_update'),
