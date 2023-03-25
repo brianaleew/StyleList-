@@ -130,8 +130,6 @@ a {
 }
 
 .home-section-two {
-    /* background: rgb(250,160,217); */
-    /* background: radial-gradient(circle, rgba(250,160,217,1) 5%, rgba(255,255,255,1) 83%); */
     color: var(--color-text);
     margin-top: 15rem;
     height: 700px;
@@ -147,8 +145,6 @@ a {
 }
 
 .home-section-three {
-    /* background: rgb(250,160,217); */
-    /* background: radial-gradient(circle, rgba(250,160,217,1) 5%, rgba(255,255,255,1) 83%); */
     color: var(--color-text);
     margin-top: 0rem;
     height: 760px;
@@ -237,7 +233,7 @@ a {
 }
 /* Apparel Form */
 .apparel-form-header {
-    background-image: url('https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=600');
+    /* background-image: url('https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=600'); */
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 20px;
@@ -262,14 +258,9 @@ a {
     border-radius: 50%;
     width: 170px;
 }
-/* .outfit-container {
-    height: 100vh;
-    background-image: url('https://images.pexels.com/photos/7166555/pexels-photo-7166555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
+
 .outfit-header {
-    background-image: url('https://images.pexels.com/photos/1750027/pexels-photo-1750027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    /* background-image: url('https://images.pexels.com/photos/1750027/pexels-photo-1750027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); */
     background-size: contain;
     background-repeat: no-repeat;
     height: 400px;
@@ -295,7 +286,7 @@ a {
 
 /* OUTFIT DETAIL */
 .outfit-detail-container {
-    background-image: url('https://images.pexels.com/photos/4467127/pexels-photo-4467127.jpeg?auto=compress&cs=tinysrgb&w=600');
+    /* background-image: url('https://images.pexels.com/photos/4467127/pexels-photo-4467127.jpeg?auto=compress&cs=tinysrgb&w=600'); */
 }
 .slides-title {
     text-align: center;
