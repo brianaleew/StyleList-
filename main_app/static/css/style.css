@@ -233,7 +233,7 @@ a {
 }
 /* Apparel Form */
 .apparel-form-header {
-    /* background-image: url('https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=600'); */
+    background-image: url('https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=600');
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 20px;
@@ -260,7 +260,7 @@ a {
 }
 
 .outfit-header {
-    /* background-image: url('https://images.pexels.com/photos/1750027/pexels-photo-1750027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); */
+    background-image: url('https://images.pexels.com/photos/1750027/pexels-photo-1750027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
     background-size: contain;
     background-repeat: no-repeat;
     height: 400px;
@@ -286,7 +286,7 @@ a {
 
 /* OUTFIT DETAIL */
 .outfit-detail-container {
-    /* background-image: url('https://images.pexels.com/photos/4467127/pexels-photo-4467127.jpeg?auto=compress&cs=tinysrgb&w=600'); */
+    background-image: url('https://images.pexels.com/photos/4467127/pexels-photo-4467127.jpeg?auto=compress&cs=tinysrgb&w=600');
 }
 .slides-title {
     text-align: center;
